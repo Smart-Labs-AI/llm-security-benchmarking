@@ -31,6 +31,7 @@ data/
 scripts/
   evaluate.py          # Evaluates one model: --model <id>
   aggregate.py         # Merges results/ → leaderboard.json
+  upload.py            # Uploads leaderboard.json to Scaleway S3
 params.yaml            # Model list and metadata
 dvc.yaml               # Pipeline definition
 ```
@@ -40,6 +41,33 @@ dvc.yaml               # Pipeline definition
 1. Add the model ID to `model_ids` in `params.yaml`
 2. Add its metadata to `models` in `params.yaml`
 3. Run `dvc repro`
+
+## Uploading to Scaleway
+
+The leaderboard is served from a Scaleway Object Storage bucket at:
+`https://leaderboard.s3.nl-ams.scw.cloud/leaderboard.json`
+
+**One-time setup:**
+
+```bash
+cp .env.example .env  # fill in SCW_ACCESS_KEY and SCW_SECRET_KEY
+```
+
+The Scaleway API key needs the `ObjectStorageFullAccess` policy (IAM → API Keys in the Scaleway Console).
+CORS configuration is managed in the website repo.
+
+**Upload after pipeline run:**
+
+```bash
+dvc repro
+source .env && uv run python scripts/upload.py
+```
+
+With direnv (`.envrc`), just:
+
+```bash
+dvc repro && uv run python scripts/upload.py
+```
 
 ## Useful commands
 
