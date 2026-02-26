@@ -1,0 +1,66 @@
+# Flat list of model IDs — used by DVC foreach to enumerate pipeline stages.
+# Adding a new ID here creates a new evaluate stage without invalidating existing ones.
+model_ids:
+  - llama-3.3-70b
+  - gemini-2.0-flash
+  - claude-3.5-haiku
+  - gpt-4o-mini
+  - mistral-small-3
+  - gpt-4o
+  - claude-3.7-sonnet
+  - gemini-1.5-pro
+  - deepseek-r1
+  - qwen2.5-72b
+  - deepseek-v3
+  - grok-2
+
+# Full metadata per model — used by aggregate.py to build leaderboard.json.
+models:
+  llama-3.3-70b:
+    name: "Llama 3.3 70B"
+    provider: "Meta"
+    category: "Open Source"
+  gemini-2.0-flash:
+    name: "Gemini 2.0 Flash"
+    provider: "Google"
+    category: "Closed Source"
+  claude-3.5-haiku:
+    name: "Claude 3.5 Haiku"
+    provider: "Anthropic"
+    category: "Closed Source"
+  gpt-4o-mini:
+    name: "GPT-4o mini"
+    provider: "OpenAI"
+    category: "Closed Source"
+  mistral-small-3:
+    name: "Mistral Small 3"
+    provider: "Mistral AI"
+    category: "Open Source"
+  gpt-4o:
+    name: "GPT-4o"
+    provider: "OpenAI"
+    category: "Closed Source"
+  claude-3.7-sonnet:
+    name: "Claude 3.7 Sonnet"
+    provider: "Anthropic"
+    category: "Closed Source"
+  gemini-1.5-pro:
+    name: "Gemini 1.5 Pro"
+    provider: "Google"
+    category: "Closed Source"
+  deepseek-r1:
+    name: "DeepSeek-R1"
+    provider: "DeepSeek"
+    category: "Open Source"
+  qwen2.5-72b:
+    name: "Qwen2.5-72B"
+    provider: "Alibaba"
+    category: "Open Source"
+  deepseek-v3:
+    name: "DeepSeek-V3"
+    provider: "DeepSeek"
+    category: "Open Source"
+  grok-2:
+    name: "Grok-2"
+    provider: "xAI"
+    category: "Closed Source"

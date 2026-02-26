@@ -1,0 +1,211 @@
+schema: '2.0'
+stages:
+  evaluate@llama-3.3-70b:
+    cmd: uv run python scripts/evaluate.py --model llama-3.3-70b
+    deps:
+    - path: data/cve_db.json
+      hash: md5
+      md5: 36f4b05ff822310c58aeaf7c96ad462d
+      size: 1112
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 2d973a911c66a5abac3302cc7287cd8e
+      size: 1133
+    outs:
+    - path: data/results/llama-3.3-70b.json
+      hash: md5
+      md5: 19a4700edb7c5d4550d894c7303f9197
+      size: 85
+  evaluate@gemini-2.0-flash:
+    cmd: uv run python scripts/evaluate.py --model gemini-2.0-flash
+    deps:
+    - path: data/cve_db.json
+      hash: md5
+      md5: 36f4b05ff822310c58aeaf7c96ad462d
+      size: 1112
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 2d973a911c66a5abac3302cc7287cd8e
+      size: 1133
+    outs:
+    - path: data/results/gemini-2.0-flash.json
+      hash: md5
+      md5: 7078143425f307384ed1617b26fb3265
+      size: 88
+  evaluate@claude-3.5-haiku:
+    cmd: uv run python scripts/evaluate.py --model claude-3.5-haiku
+    deps:
+    - path: data/cve_db.json
+      hash: md5
+      md5: 36f4b05ff822310c58aeaf7c96ad462d
+      size: 1112
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 2d973a911c66a5abac3302cc7287cd8e
+      size: 1133
+    outs:
+    - path: data/results/claude-3.5-haiku.json
+      hash: md5
+      md5: aac2dbb0023e9da9c8d36a5d36fc3c37
+      size: 88
+  evaluate@gpt-4o-mini:
+    cmd: uv run python scripts/evaluate.py --model gpt-4o-mini
+    deps:
+    - path: data/cve_db.json
+      hash: md5
+      md5: 36f4b05ff822310c58aeaf7c96ad462d
+      size: 1112
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 2d973a911c66a5abac3302cc7287cd8e
+      size: 1133
+    outs:
+    - path: data/results/gpt-4o-mini.json
+      hash: md5
+      md5: f4315bdfc99430a499dce53a90cd0994
+      size: 83
+  evaluate@mistral-small-3:
+    cmd: uv run python scripts/evaluate.py --model mistral-small-3
+    deps:
+    - path: data/cve_db.json
+      hash: md5
+      md5: 36f4b05ff822310c58aeaf7c96ad462d
+      size: 1112
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 2d973a911c66a5abac3302cc7287cd8e
+      size: 1133
+    outs:
+    - path: data/results/mistral-small-3.json
+      hash: md5
+      md5: 03a9e763d505a88a222f5c682abcea43
+      size: 87
+  evaluate@gpt-4o:
+    cmd: uv run python scripts/evaluate.py --model gpt-4o
+    deps:
+    - path: data/cve_db.json
+      hash: md5
+      md5: 36f4b05ff822310c58aeaf7c96ad462d
+      size: 1112
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 2d973a911c66a5abac3302cc7287cd8e
+      size: 1133
+    outs:
+    - path: data/results/gpt-4o.json
+      hash: md5
+      md5: acf253a22ca93ff2dfd8ad0d3a248b4f
+      size: 78
+  evaluate@claude-3.7-sonnet:
+    cmd: uv run python scripts/evaluate.py --model claude-3.7-sonnet
+    deps:
+    - path: data/cve_db.json
+      hash: md5
+      md5: 36f4b05ff822310c58aeaf7c96ad462d
+      size: 1112
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 2d973a911c66a5abac3302cc7287cd8e
+      size: 1133
+    outs:
+    - path: data/results/claude-3.7-sonnet.json
+      hash: md5
+      md5: 45b10a4a24116e0abd40254ae2c4467c
+      size: 89
+  evaluate@gemini-1.5-pro:
+    cmd: uv run python scripts/evaluate.py --model gemini-1.5-pro
+    deps:
+    - path: data/cve_db.json
+      hash: md5
+      md5: 36f4b05ff822310c58aeaf7c96ad462d
+      size: 1112
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 2d973a911c66a5abac3302cc7287cd8e
+      size: 1133
+    outs:
+    - path: data/results/gemini-1.5-pro.json
+      hash: md5
+      md5: a9cccb30f7b814d763a9daa1c3109308
+      size: 85
+  evaluate@deepseek-r1:
+    cmd: uv run python scripts/evaluate.py --model deepseek-r1
+    deps:
+    - path: data/cve_db.json
+      hash: md5
+      md5: 36f4b05ff822310c58aeaf7c96ad462d
+      size: 1112
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 2d973a911c66a5abac3302cc7287cd8e
+      size: 1133
+    outs:
+    - path: data/results/deepseek-r1.json
+      hash: md5
+      md5: a6fcc78e2f0dfab392e5002abe56af72
+      size: 83
+  evaluate@qwen2.5-72b:
+    cmd: uv run python scripts/evaluate.py --model qwen2.5-72b
+    deps:
+    - path: data/cve_db.json
+      hash: md5
+      md5: 36f4b05ff822310c58aeaf7c96ad462d
+      size: 1112
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 2d973a911c66a5abac3302cc7287cd8e
+      size: 1133
+    outs:
+    - path: data/results/qwen2.5-72b.json
+      hash: md5
+      md5: 9e8ec9aae2bed9df90c5d8f864bc0f0c
+      size: 83
+  evaluate@deepseek-v3:
+    cmd: uv run python scripts/evaluate.py --model deepseek-v3
+    deps:
+    - path: data/cve_db.json
+      hash: md5
+      md5: 36f4b05ff822310c58aeaf7c96ad462d
+      size: 1112
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 2d973a911c66a5abac3302cc7287cd8e
+      size: 1133
+    outs:
+    - path: data/results/deepseek-v3.json
+      hash: md5
+      md5: 091d4d4668bbf8aa14f387ccab8fe115
+      size: 83
+  evaluate@grok-2:
+    cmd: uv run python scripts/evaluate.py --model grok-2
+    deps:
+    - path: data/cve_db.json
+      hash: md5
+      md5: 36f4b05ff822310c58aeaf7c96ad462d
+      size: 1112
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 2d973a911c66a5abac3302cc7287cd8e
+      size: 1133
+    outs:
+    - path: data/results/grok-2.json
+      hash: md5
+      md5: bcb4d107dc64ed9f08a8427aa93c46e3
+      size: 78
+  aggregate:
+    cmd: uv run python scripts/aggregate.py
+    deps:
+    - path: data/results/
+      hash: md5
+      md5: 345232bcd7efbcca20cc8b3cccbd4aa2.dir
+      size: 1010
+      nfiles: 12
+    - path: scripts/aggregate.py
+      hash: md5
+      md5: 08661ed12a9ec9c5acc4d30c7f326334
+      size: 1357
+    outs:
+    - path: data/leaderboard.json
+      hash: md5
+      md5: 88d0a05d8c4c5716dca06dec807357de
+      size: 2058

@@ -1,0 +1,19 @@
+stages:
+  evaluate:
+    foreach: ${model_ids}
+    do:
+      cmd: uv run python scripts/evaluate.py --model ${item}
+      deps:
+        - scripts/evaluate.py
+        - data/cve_db.json  # re-runs all when CVE database is updated
+      outs:
+        - data/results/${item}.json
+
+  aggregate:
+    cmd: uv run python scripts/aggregate.py
+    deps:
+      - scripts/aggregate.py
+      - data/results/
+    outs:
+      - data/leaderboard.json:
+          cache: false  # keep leaderboard.json in git, not DVC cache
