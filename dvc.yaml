@@ -5,7 +5,9 @@ stages:
       cmd: uv run python scripts/evaluate.py --model ${item}
       deps:
         - scripts/evaluate.py
-        - data/injections.jsonl
+        - scripts/agents.py
+        - scripts/servers.py
+        - assets/injections.jsonl
       outs:
         - data/results/${item}.json
 

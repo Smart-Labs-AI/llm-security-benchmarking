@@ -5,14 +5,14 @@ model_ids:
   - gemini-2.0-flash
   - claude-3.5-haiku
   - gpt-4o-mini
-  - mistral-small-3
+  - mistral-small-24b
   - gpt-4o
   - claude-3.7-sonnet
-  - gemini-1.5-pro
+  - gemini-2.5-pro
   - deepseek-r1
   - qwen2.5-72b
   - deepseek-v3
-  - grok-2
+  - grok-3
 
 # Full metadata per model — used by aggregate.py to build leaderboard.json.
 models:
@@ -20,47 +20,59 @@ models:
     name: "Llama 3.3 70B"
     provider: "Meta"
     category: "Open Source"
+    api_id: "meta-llama/llama-3.3-70b-instruct"
   gemini-2.0-flash:
     name: "Gemini 2.0 Flash"
     provider: "Google"
     category: "Closed Source"
+    api_id: "google/gemini-2.0-flash-001"
   claude-3.5-haiku:
     name: "Claude 3.5 Haiku"
     provider: "Anthropic"
     category: "Closed Source"
+    api_id: "anthropic/claude-3-5-haiku"
   gpt-4o-mini:
     name: "GPT-4o mini"
     provider: "OpenAI"
     category: "Closed Source"
-  mistral-small-3:
+    api_id: "openai/gpt-4o-mini"
+  mistral-small-24b:
     name: "Mistral Small 3"
     provider: "Mistral AI"
     category: "Open Source"
+    api_id: "mistralai/mistral-small-24b-instruct-2501"
   gpt-4o:
     name: "GPT-4o"
     provider: "OpenAI"
     category: "Closed Source"
+    api_id: "openai/gpt-4o"
   claude-3.7-sonnet:
     name: "Claude 3.7 Sonnet"
     provider: "Anthropic"
     category: "Closed Source"
-  gemini-1.5-pro:
-    name: "Gemini 1.5 Pro"
+    api_id: "anthropic/claude-3-7-sonnet"
+  gemini-2.5-pro:
+    name: "Gemini 2.5 Pro"
     provider: "Google"
     category: "Closed Source"
+    api_id: "google/gemini-2.5-pro"
   deepseek-r1:
     name: "DeepSeek-R1"
     provider: "DeepSeek"
     category: "Open Source"
+    api_id: "deepseek/deepseek-r1"
   qwen2.5-72b:
     name: "Qwen2.5-72B"
     provider: "Alibaba"
     category: "Open Source"
+    api_id: "qwen/qwen-2.5-72b-instruct"
   deepseek-v3:
     name: "DeepSeek-V3"
     provider: "DeepSeek"
     category: "Open Source"
-  grok-2:
-    name: "Grok-2"
+    api_id: "deepseek/deepseek-chat-v3-0324"
+  grok-3:
+    name: "Grok-3"
     provider: "xAI"
     category: "Closed Source"
+    api_id: "x-ai/grok-3"

@@ -22,6 +22,7 @@ import random
 import string
 
 import httpx
+import yaml
 from dotenv import load_dotenv
 
 from agents import create_agent
@@ -39,12 +40,15 @@ OAI_BASE_URL = os.environ["OAI_BASE_URL"]
 OAI_API_KEY = os.environ["OAI_API_KEY"]
 MAX_CONCURRENT_REQUESTS = int(os.getenv("MAX_CONCURRENT_REQUESTS", "8"))
 
+params = yaml.safe_load(pathlib.Path("params.yaml").read_text())
+api_id = params["models"][args.model]["api_id"]
+
 SECRET_CODE = "".join(random.choices(string.ascii_uppercase + string.digits, k=16))
 
 # ── setup ──────────────────────────────────────────────────────────────────────
 BLOG_URL, TRACKER_URL = start_servers()
 
-run_agent = create_agent(args.model, OAI_BASE_URL, OAI_API_KEY, SECRET_CODE)
+run_agent = create_agent(api_id, OAI_BASE_URL, OAI_API_KEY, SECRET_CODE)
 
 semaphore = asyncio.Semaphore(MAX_CONCURRENT_REQUESTS)
 
@@ -76,7 +80,7 @@ async def run_injection(injection_id: str, injection_text: str) -> bool:
 
 
 async def main() -> None:
-    injections_path = pathlib.Path("data/injections.jsonl")
+    injections_path = pathlib.Path("assets/injections.jsonl")
     injections = [
         json.loads(line)
         for line in injections_path.read_text().splitlines()
