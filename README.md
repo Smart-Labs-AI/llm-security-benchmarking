@@ -42,6 +42,21 @@ dvc.yaml               # Pipeline definition
 2. Add its metadata to `models` in `params.yaml`
 3. Run `dvc repro`
 
+## DVC remote (one-time setup)
+
+Results are cached in the `leaderboard-cache` Scaleway bucket so CI only re-evaluates changed models.
+
+```bash
+dvc remote modify --local scaleway access_key_id YOUR_SCW_ACCESS_KEY
+dvc remote modify --local scaleway secret_access_key YOUR_SCW_SECRET_KEY
+```
+
+This writes to `.dvc/config.local` (git-ignored). After running the pipeline locally, push the cache:
+
+```bash
+dvc push
+```
+
 ## Uploading to Scaleway
 
 The leaderboard is served from a Scaleway Object Storage bucket at:
@@ -69,10 +84,23 @@ With direnv (`.envrc`), just:
 dvc repro && uv run python scripts/upload.py
 ```
 
+## CI/CD (GitHub Actions)
+
+The pipeline runs automatically on:
+- Push to `main` when `evaluate.py`, `cve_db.json`, `params.yaml`, or `dvc.yaml` change
+- Monthly schedule (1st of month, 06:00 UTC)
+- Manual trigger via `workflow_dispatch`
+
+Required GitHub Secrets (Settings → Secrets and variables → Actions):
+- `SCW_ACCESS_KEY`
+- `SCW_SECRET_KEY`
+
 ## Useful commands
 
 ```bash
 dvc status                                    # show what's out of date
 dvc repro evaluate@<model-id> --force         # force re-evaluate one model
 dvc repro --force                             # force re-evaluate everything
+dvc push                                      # push results to remote cache
+dvc pull                                      # fetch results from remote cache
 ```

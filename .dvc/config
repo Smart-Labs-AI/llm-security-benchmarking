@@ -1,0 +1,7 @@
+[core]
+    remote = scaleway
+
+['remote "scaleway"']
+    url = s3://leaderboard-cache/cache
+    endpointurl = https://s3.nl-ams.scw.cloud
+    region = nl-ams

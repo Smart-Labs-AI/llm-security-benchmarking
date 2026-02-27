@@ -1,0 +1,47 @@
+name: Benchmark pipeline
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/evaluate.py
+      - data/cve_db.json
+      - params.yaml
+      - dvc.yaml
+  workflow_dispatch:      # manual trigger from GitHub UI
+  schedule:
+    - cron: '0 6 1 * *'  # monthly on the 1st at 06:00 UTC
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Configure DVC remote credentials
+        run: |
+          uv run dvc remote modify --local scaleway \
+            access_key_id ${{ secrets.SCW_ACCESS_KEY }}
+          uv run dvc remote modify --local scaleway \
+            secret_access_key ${{ secrets.SCW_SECRET_KEY }}
+
+      - name: Pull cached results
+        run: uv run dvc pull --run-cache
+
+      - name: Run pipeline (incremental)
+        run: uv run dvc repro
+
+      - name: Push new results to cache
+        run: uv run dvc push
+
+      - name: Upload leaderboard to Scaleway
+        env:
+          SCW_ACCESS_KEY: ${{ secrets.SCW_ACCESS_KEY }}
+          SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
+        run: uv run python scripts/upload.py
