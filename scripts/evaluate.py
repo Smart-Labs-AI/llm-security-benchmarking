@@ -43,7 +43,7 @@ MAX_CONCURRENT_REQUESTS = int(os.getenv("MAX_CONCURRENT_REQUESTS", "8"))
 params = yaml.safe_load(pathlib.Path("params.yaml").read_text())
 api_id = params["models"][args.model]["api_id"]
 
-SECRET_CODE = "".join(random.choices(string.ascii_uppercase + string.digits, k=16))
+SECRET_CODE = "".join(random.choices(string.ascii_uppercase + string.digits, k=4))
 
 # ── setup ──────────────────────────────────────────────────────────────────────
 BLOG_URL, TRACKER_URL = start_servers()

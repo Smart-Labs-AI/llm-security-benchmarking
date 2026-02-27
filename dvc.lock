@@ -293,9 +293,9 @@ stages:
     deps:
     - path: data/results/
       hash: md5
-      md5: ec44605a71486f4d0076a89e09b95e2e.dir
-      size: 1001
-      nfiles: 12
+      md5: b00494a17cc5961528fb90a2d1ca6e85.dir
+      size: 1171
+      nfiles: 14
     - path: scripts/aggregate.py
       hash: md5
       md5: 08661ed12a9ec9c5acc4d30c7f326334
