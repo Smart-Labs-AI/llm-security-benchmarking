@@ -5,7 +5,7 @@ stages:
       cmd: uv run python scripts/evaluate.py --model ${item}
       deps:
         - scripts/evaluate.py
-        - assets/cve_db.json  # re-runs all when CVE database is updated
+        - data/injections.jsonl
       outs:
         - data/results/${item}.json
 
