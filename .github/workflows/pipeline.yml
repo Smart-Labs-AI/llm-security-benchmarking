@@ -36,6 +36,9 @@ jobs:
 
       - name: Run pipeline (incremental)
         run: uv run dvc repro
+        env:
+          OAI_BASE_URL: ${{ secrets.OAI_BASE_URL }}
+          OAI_API_KEY: ${{ secrets.OAI_API_KEY }}
 
       - name: Push new results to cache
         run: uv run dvc push
